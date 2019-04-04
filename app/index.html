@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Jino</title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/grid.css">
+    <link href="http://allfont.ru/allfont.css?fonts=pt-sans" rel="stylesheet" type="text/css" />
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="grid-wrapper">
+			<div class="wrap items-6 l-3">
+				<form action="">
+				<label for="" class="label-form">ФИО</label>
+				<input type="text">
+				<label for="" class="label-form">E-mail</label>
+				<a href="" class="input-links">Задать</a>
+				<input type="email" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;">
+				<label for="" class="label-form">Телефон</label>
+				<a href="" class="input-links">Подтвердить</a>
+				<input type="phone" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}">
+				<p class="text-form">Номер мобильного телефона для важных оповещений, авторизации и восстановления пароля. <br>
+				Вы должны быть единственным человеком, имеющим доступ к этому номеру.</p>
+				<button class="submit-form">Сохранить</button>
+				<div class="account-success">
+					<h4 class="h4">Подтверждение аккаунта</h4>
+					<p class="text-form">Для подтверждения вашего аккаунта вам нужно заполнить все поля, подтвердить почтовый ящик и телефон, а также загрузить сканы ваших документов.</p>
+					<div class="account items-12">
+						<div class="account-items items-1">
+							<img src="img/upload.svg" alt="" v-on:click="uploadFile" v-if="!isWait">
+							<img src="img/wait.svg" alt="" v-if="isWait" class="wait-icon">
+							</div>
+							<div class="account-items-text items-7 l-2">
+								<a href="#" v-on:click="uploadFile">Загрузить скан страницы с фотографией</a>
+							<p>Размер файла не более 5Мб</p>
+						</div>
+					</div>
+					<div class="account items-12">
+						<div class="account-items items-1">
+							<img src="img/ok.svg" alt="" v-on:click="uploadFile">
+						</div>
+						<div class="account-items-text items-7 l-2">
+							<label>Страница с пропиской</label>
+							<p>Propiska.jpg (256Кб)</p>
+						</div>
+						<div class="account-items items-1 p-0">
+							<div class="answer" v-bind:class="{accept: isAccept}" v-if="isAccept">{{rightAnswer}}</div>
+								<div class="answer not-accept" v-if="!isAccept">{{rightAnswer}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<script src="js/common.js"></script>
+</body>
+</html>
